@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8fc">
+  <meta name="description" content="Create and export clear neural network architecture diagrams with activation curves.">
+  <title>Neural Network Sketch</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-icon" aria-hidden="true"><i></i><i></i><i></i></span><span>Neural Network <strong>Sketch</strong></span></div>
+    </header>
+
+    <main class="workspace">
+      <aside class="sidebar" aria-label="Network settings">
+        <div class="section-title"><span>Layers</span><span id="layerCount" class="count-pill">3</span></div>
+        <div id="layerList" class="layer-list"></div>
+        <button id="addLayer" class="add-layer" type="button"><span aria-hidden="true">＋</span> Add hidden layer</button>
+        <div class="loss-settings">
+          <label class="loss-toggle" for="showLoss"><span><i class="loss-badge" aria-hidden="true">L</i> Loss</span><input id="showLoss" type="checkbox" checked></label>
+          <div id="lossOptions" class="field"><label for="lossFunction">FUNCTION</label><select id="lossFunction"><option value="MSE">Mean squared error</option><option value="MAE">Mean absolute error</option><option value="Huber">Huber</option><option value="Binary CE">Binary cross-entropy</option><option value="Categorical CE">Categorical cross-entropy</option></select></div>
+        </div>
+        <div class="width-settings">
+          <div class="width-heading"><label for="graphWidth">Diagram width</label><output id="graphWidthValue" for="graphWidth">1280 px</output></div>
+          <input id="graphWidth" type="range" min="800" max="3000" step="10" value="1280">
+        </div>
+      </aside>
+
+      <section class="main-panel" aria-label="Diagram preview">
+        <div class="canvas-header"><h2>Diagram</h2><div class="header-actions"><button id="copyBtn" class="button button-secondary" type="button"><span aria-hidden="true">⧉</span> Copy</button><div class="download-wrap"><button id="downloadBtn" class="button button-primary" type="button" aria-expanded="false" aria-haspopup="true"><span aria-hidden="true">↓</span> Download <span class="chevron">⌄</span></button><div id="downloadMenu" class="download-menu" hidden><button id="svgBtn" type="button">SVG</button><button id="pngBtn" type="button">PNG</button></div></div></div></div>
+        <div class="canvas-frame"><div id="diagram" class="diagram" role="img" aria-label="Neural network architecture diagram"></div></div>
+      </section>
+    </main>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
